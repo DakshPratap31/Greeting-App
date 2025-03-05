@@ -1,6 +1,7 @@
 package com.example.GreetingApp.controller;
 
 import com.example.GreetingApp.dto.LoginDTO;
+import com.example.GreetingApp.dto.MailDTO;
 import com.example.GreetingApp.dto.MessageDTO;
 import com.example.GreetingApp.dto.AuthUserDTO;
 import com.example.GreetingApp.Services.AuthenticationService;
@@ -32,6 +33,12 @@ public class UserController {
         return authenticationService.login(user);
     }
 
+    //UC11 --> For sending mail to another person
+    @PostMapping(path = "/sendMail")
+    public String sendMail(@RequestBody MailDTO message){
+        emailService.sendEmail(message.getTo(), message.getSubject(), message.getBody());
+        return "Mail sent";
+    }
 
 
 }
