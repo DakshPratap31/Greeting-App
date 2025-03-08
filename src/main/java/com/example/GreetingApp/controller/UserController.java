@@ -1,14 +1,10 @@
 package com.example.GreetingApp.controller;
 
-import com.example.GreetingApp.dto.LoginDTO;
-import com.example.GreetingApp.dto.MailDTO;
-import com.example.GreetingApp.dto.MessageDTO;
-import com.example.GreetingApp.dto.AuthUserDTO;
+import com.example.GreetingApp.dto.*;
+import com.example.GreetingApp.interfaces.IAuthInterface;
 import com.example.GreetingApp.Services.AuthenticationService;
 import com.example.GreetingApp.Services.EmailService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController {
@@ -38,6 +34,13 @@ public class UserController {
     public String sendMail(@RequestBody MailDTO message){
         emailService.sendEmail(message.getTo(), message.getSubject(), message.getBody());
         return "Mail sent";
+    }
+
+
+    //UC12 --> Added forgot password functionality
+    @PutMapping("/forgotPassword/{email}")
+    public AuthUserDTO forgotPassword(@RequestBody PassDTO pass, @PathVariable String email){
+        return IAuthInterface.forgotPassword(pass, email);
     }
 
 

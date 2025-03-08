@@ -46,7 +46,11 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
 		<!-- H2 Database (In-Memory) -->
 		<dependency>
 			<groupId>com.h2database</groupId>
