@@ -17,5 +17,7 @@ public interface IAuthInterface {
         return null;
     }
 
-
+    public static String resetPassword(String email, String currentPass, String newPass) {
+        return null;
+    }
 }
